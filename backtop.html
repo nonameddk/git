@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>backtop</title>
+    <style type="text/css">
+        p{
+            height: 600px;
+        }
+        #abtn{
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+        <p>我是第一个p</p>
+        <p>我是第2个p</p>
+        <p>我是第3个p</p>
+        <p>我是第4个p</p>
+        <p>我是第5个p</p>
+        <p>我是第6个p</p>
+        <p>我是第7个p</p>
+        <a href="javascript:;" id="abtn">返回顶点</a>
+</body>
+
+<script type="text/javascript">
+    var A =  document.getElementById('abtn');
+    var timer = null;
+    window.onscroll = function(){
+        var height11 = document.body.scrollTop || document.documentElement.scrollTop;
+//        console.log("scrollTop:"+height11);
+//        console.log("clientHeight:"+document.documentElement.clientHeight);
+        if(height11 > document.documentElement.clientHeight){
+            A.style.display = "block";
+        }else{
+            A.style.display = "none";
+        }
+    };
+
+    A.onclick = function(){
+        timer = setInterval(function(){
+            var scrolltop = document.body.scrollTop; //|| document.documentElement.scrollTop;
+            document.body.scrollTop -= 100;
+            if(document.body.scrollTop == 0){
+                clearInterval(timer);
+            }
+        },30);
+    };
+
+
+</script>
+</html>
